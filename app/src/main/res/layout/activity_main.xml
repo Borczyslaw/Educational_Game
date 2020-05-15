@@ -8,18 +8,92 @@
 
     <TextView
         android:id="@+id/label1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="127dp"
+        android:layout_height="67dp"
         android:layout_marginStart="177dp"
-        android:layout_marginTop="225dp"
+        android:layout_marginTop="612dp"
         android:layout_marginEnd="157dp"
-        android:layout_marginBottom="487dp"
+        android:layout_marginBottom="52dp"
         android:text="Hello World!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_Zwierzeta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="107dp"
+        android:layout_marginEnd="274dp"
+        android:layout_marginBottom="68dp"
+        android:text="@string/Zwierzeta"
+        app:layout_constraintBottom_toTopOf="@+id/btn_dom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_dom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="286dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/Dom"
+        app:layout_constraintBottom_toTopOf="@+id/btnUbrania"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Zwierzeta" />
+
+    <Button
+        android:id="@+id/btn_jedzenie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="284dp"
+        android:layout_marginBottom="196dp"
+        android:text="@string/jedzenie"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_szkola" />
+
+    <Button
+        android:id="@+id/btn_szkola"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="286dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/Szkola"
+        app:layout_constraintBottom_toTopOf="@+id/btn_jedzenie"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnUbrania" />
+
+    <Button
+        android:id="@+id/btnUbrania"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="286dp"
+        android:layout_marginBottom="4dp"
+        android:text="@string/ubrania"
+        app:layout_constraintBottom_toTopOf="@+id/btn_szkola"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_dom" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
