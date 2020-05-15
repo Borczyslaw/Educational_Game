@@ -1,0 +1,30 @@
+kettle
+house
+door
+rug
+jug
+armchair
+shower
+fireplace
+wastebasket
+chair
+cooker
+lamp
+fridge
+mirror
+bed
+microwave
+window
+washing machine
+bookcase
+towel
+plant
+sofa
+table
+wardrobe
+drawer
+sink
+bath
+coat hanger
+curtain
+dishwasher
