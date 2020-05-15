@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Projekt</string>
+    <string name="Zwierzeta">Zwierzeta</string>
+    <string name="Dom">Dom</string>
+    <string name="Szkola">Szkola</string>
+    <string name="jedzenie">jedzenie</string>
+    <string name="ubrania">ubrania</string>
+    <string name="Wybierz_kat">Wybierz kategorie:</string>
 </resources>
