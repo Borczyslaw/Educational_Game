@@ -3,7 +3,6 @@ package edu.psmw.projekt
 import android.content.Context
 import android.content.res.AssetManager
 import java.io.BufferedReader
-import java.io.File
 import java.io.InputStream
 import java.util.*
 
@@ -32,7 +31,7 @@ class Words {
 
     fun get_rand_word( context: Context, fileName: String): String
     {
-        var array = readFile(context,fileName)
+        val array = readFile(context,fileName)
         val rand = Random()
         val x: Int = rand.nextInt(30)
         return array[x]
