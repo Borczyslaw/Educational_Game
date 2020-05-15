@@ -1,2 +1,3 @@
 rootProject.name='Projekt'
 include ':app'
+include ':words_class'
