@@ -14,17 +14,17 @@ class ImageReader {
         return file
     }
 
-    fun RandImage(fileName: String, array: Array<StringBuilder>): String
+    fun RandImage(good_word: String, array: Array<String>): String
     {
         val rand = Random()
         var x: Int = rand.nextInt(30)
         while(true)
-            if(array[x].equals(fileName)) {
+            if(array[x].equals(good_word)) {
                 x = rand.nextInt(30)
             }else {
                 break
             }
-        return array[x].toString()
+        return array[x]
     }
 
     fun formatName(fileName: String): String
