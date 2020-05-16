@@ -41,7 +41,6 @@ class MainActivity : AppCompatActivity() {
             textView4.text = wrong_images[2]
             val imageResource = resources.getIdentifier("@drawable/$good_word", null, this.packageName)
             imageView.setImageResource(imageResource)
-
         }
         val button_dom = btn_dom
         button_dom.setOnClickListener {
