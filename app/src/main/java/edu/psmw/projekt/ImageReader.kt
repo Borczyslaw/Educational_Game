@@ -5,15 +5,6 @@ import java.util.*
 
 class ImageReader {
 
-    fun ReadImage(fileName: String, cat: String): File
-    {
-        val s = formatName(fileName)
-        var cat2 = cat
-        cat2 += s
-        val file = File(cat2)
-        return file
-    }
-
     fun RandImage(good_word: String, array: Array<String>): String
     {
         val rand = Random()

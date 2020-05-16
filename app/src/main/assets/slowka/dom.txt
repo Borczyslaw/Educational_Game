@@ -15,7 +15,7 @@ mirror
 bed
 microwave
 window
-washing machine
+washing_machine
 bookcase
 towel
 plant
@@ -25,6 +25,6 @@ wardrobe
 drawer
 sink
 bath
-coat hanger
+coat_hanger
 curtain
 dishwasher
