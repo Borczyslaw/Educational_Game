@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
 import java.util.*
 
+
 class MainActivity : AppCompatActivity() {
 
     fun onClickTemp(word: Words, kat: String ): String
@@ -39,8 +40,17 @@ class MainActivity : AppCompatActivity() {
             textView2.text = wrong_images[0]
             textView3.text = wrong_images[1]
             textView4.text = wrong_images[2]
+            val wrong_image1 = wrong_images[0]
+            val wrong_image2 = wrong_images[1]
+            val wrong_image3 = wrong_images[2]
             val imageResource = resources.getIdentifier("@drawable/$good_word", null, this.packageName)
+            val ximageResource = resources.getIdentifier("@drawable/$wrong_image1", null, this.packageName)
+            val yimageResource = resources.getIdentifier("@drawable/$wrong_image2", null, this.packageName)
+            val zimageResource = resources.getIdentifier("@drawable/$wrong_image3", null, this.packageName)
             imageView.setImageResource(imageResource)
+            imageView2.setImageResource(ximageResource)
+            imageView3.setImageResource(yimageResource)
+            imageView4.setImageResource(zimageResource)
         }
         val button_dom = btn_dom
         button_dom.setOnClickListener {
@@ -56,8 +66,17 @@ class MainActivity : AppCompatActivity() {
             textView2.text = wrong_images[0]
             textView3.text = wrong_images[1]
             textView4.text = wrong_images[2]
+            val wrong_image1 = wrong_images[0]
+            val wrong_image2 = wrong_images[1]
+            val wrong_image3 = wrong_images[2]
             val imageResource = resources.getIdentifier("@drawable/$good_word", null, this.packageName)
+            val ximageResource = resources.getIdentifier("@drawable/$wrong_image1", null, this.packageName)
+            val yimageResource = resources.getIdentifier("@drawable/$wrong_image2", null, this.packageName)
+            val zimageResource = resources.getIdentifier("@drawable/$wrong_image3", null, this.packageName)
             imageView.setImageResource(imageResource)
+            imageView2.setImageResource(ximageResource)
+            imageView3.setImageResource(yimageResource)
+            imageView4.setImageResource(zimageResource)
         }
         val button_jedzenie = btn_jedzenie
         button_jedzenie.setOnClickListener {
@@ -73,8 +92,17 @@ class MainActivity : AppCompatActivity() {
             textView2.text = wrong_images[0]
             textView3.text = wrong_images[1]
             textView4.text = wrong_images[2]
+            val wrong_image1 = wrong_images[0]
+            val wrong_image2 = wrong_images[1]
+            val wrong_image3 = wrong_images[2]
             val imageResource = resources.getIdentifier("@drawable/$good_word", null, this.packageName)
+            val ximageResource = resources.getIdentifier("@drawable/$wrong_image1", null, this.packageName)
+            val yimageResource = resources.getIdentifier("@drawable/$wrong_image2", null, this.packageName)
+            val zimageResource = resources.getIdentifier("@drawable/$wrong_image3", null, this.packageName)
             imageView.setImageResource(imageResource)
+            imageView2.setImageResource(ximageResource)
+            imageView3.setImageResource(yimageResource)
+            imageView4.setImageResource(zimageResource)
         }
         val button_szkola = btn_szkola
         button_szkola.setOnClickListener {
@@ -90,8 +118,17 @@ class MainActivity : AppCompatActivity() {
             textView2.text = wrong_images[0]
             textView3.text = wrong_images[1]
             textView4.text = wrong_images[2]
+            val wrong_image1 = wrong_images[0]
+            val wrong_image2 = wrong_images[1]
+            val wrong_image3 = wrong_images[2]
             val imageResource = resources.getIdentifier("@drawable/$good_word", null, this.packageName)
+            val ximageResource = resources.getIdentifier("@drawable/$wrong_image1", null, this.packageName)
+            val yimageResource = resources.getIdentifier("@drawable/$wrong_image2", null, this.packageName)
+            val zimageResource = resources.getIdentifier("@drawable/$wrong_image3", null, this.packageName)
             imageView.setImageResource(imageResource)
+            imageView2.setImageResource(ximageResource)
+            imageView3.setImageResource(yimageResource)
+            imageView4.setImageResource(zimageResource)
         }
         val button_zwierzeta = btn_Zwierzeta
         button_zwierzeta.setOnClickListener {
@@ -107,12 +144,19 @@ class MainActivity : AppCompatActivity() {
             textView2.text = wrong_images[0]
             textView3.text = wrong_images[1]
             textView4.text = wrong_images[2]
+            val wrong_image1 = wrong_images[0]
+            val wrong_image2 = wrong_images[1]
+            val wrong_image3 = wrong_images[2]
             val imageResource = resources.getIdentifier("@drawable/$good_word", null, this.packageName)
+            val ximageResource = resources.getIdentifier("@drawable/$wrong_image1", null, this.packageName)
+            val yimageResource = resources.getIdentifier("@drawable/$wrong_image2", null, this.packageName)
+            val zimageResource = resources.getIdentifier("@drawable/$wrong_image3", null, this.packageName)
             imageView.setImageResource(imageResource)
+            imageView2.setImageResource(ximageResource)
+            imageView3.setImageResource(yimageResource)
+            imageView4.setImageResource(zimageResource)
         }
 
     }
 
 }
-
-
