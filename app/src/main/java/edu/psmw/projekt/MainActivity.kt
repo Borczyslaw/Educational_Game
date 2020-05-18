@@ -8,6 +8,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.pierwwszy_ekran.*
+import kotlinx.android.synthetic.main.wybor_kategorii.*
 import java.io.File
 import java.util.*
 
@@ -28,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         var path = "/obrazki/"
         val word = Words() //instancja
         btn_start_game.setOnClickListener{
-            setContentView(R.layout.activity_main)
+            setContentView(R.layout.wybor_kategorii)
             val button_Ubr = btn_ubrania
             button_Ubr.setOnClickListener {
                 val kat = "ubrania"
@@ -136,6 +137,7 @@ class MainActivity : AppCompatActivity() {
             val button_zwierzeta = zwierze
             button_zwierzeta.setOnClickListener {
                 val kat = "Zwierzeta"
+                setContentView(R.layout.activity_main)
                 val good_word = onClickTemp(word, kat)
                 val image = ImageReader()
                 path += kat + "/"
