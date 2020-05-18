@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
     fun onClickTemp(word: Words, kat: String ): String
     {
         val rand_word = word.get_rand_word(this, "slowka/"+kat+".txt")
-        //label1.text = rand_word
         return rand_word
     }
 
