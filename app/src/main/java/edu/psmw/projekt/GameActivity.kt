@@ -14,7 +14,6 @@ class GameActivity : AppCompatActivity() {
         wrong_answers.text = "0"
         val kat: String= intent.getStringExtra("kat")
         val image = ImageReader()
-        // val path = "/obrazki/" + kat + "/"
         val word = Words()
         val good_word = onClickTemp(word, kat)
         val wrong_images = Array<String>(3){"it =$it"}
@@ -38,7 +37,6 @@ class GameActivity : AppCompatActivity() {
     fun onClickTemp(word: Words, kat: String ): String
     {
         val rand_word = word.get_rand_word(this, "slowka/"+kat+".txt")
-        //label1.text = rand_word
         return rand_word
     }
 }
