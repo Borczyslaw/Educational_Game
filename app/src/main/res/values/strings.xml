@@ -7,4 +7,9 @@
     <string name="ubrania">ubrania</string>
     <string name="Wybierz_kat">Wybierz kategorie:</string>
     <string name="glowna_str_button">Rozpocznij grę</string>
+
+    <string name="title_activity_game_activity">Game_activity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="obrazek">losowany obrazek</string>
 </resources>
