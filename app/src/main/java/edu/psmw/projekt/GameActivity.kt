@@ -19,6 +19,9 @@ class GameActivity : AppCompatActivity() {
         amount_of_lives.text = "3"
         good_answers.text = "0"
         wrong_answers.text = "0"
+        var good_answers_counter = 0
+        var wrong_answers_counter = 0
+        var amount_of_lives_counter = 3
         val kat: String= intent.getStringExtra("kat")
         val image = ImageReader()
         val word = Words()
@@ -39,6 +42,37 @@ class GameActivity : AppCompatActivity() {
         imageView2.setImageResource(ximageResource)
         imageView3.setImageResource(yimageResource)
         imageView4.setImageResource(zimageResource)
+        val imageViev1 = imageView1
+        imageView1.setOnClickListener {
+            good_answers_counter += 1
+            good_answers.text = good_answers_counter.toString()
+        }
+        val imageViev2 = imageView2
+        imageView2.setOnClickListener {
+            wrong_answers_counter += 1
+            wrong_answers.text = wrong_answers_counter.toString()
+            amount_of_lives_counter -= 1
+            amount_of_lives.text = amount_of_lives_counter.toString()
+        }
+        val imageViev3 = imageView3
+        imageView3.setOnClickListener {
+            wrong_answers_counter += 1
+            wrong_answers.text = wrong_answers_counter.toString()
+            amount_of_lives_counter -= 1
+            amount_of_lives.text = amount_of_lives_counter.toString()
+        }
+        val imageViev4 = imageView4
+        imageView4.setOnClickListener {
+            wrong_answers_counter += 1
+            wrong_answers.text = wrong_answers_counter.toString()
+            amount_of_lives_counter -= 1
+            amount_of_lives.text = amount_of_lives_counter.toString()
+        }
+
+        if (amount_of_lives_counter == 0)
+        {
+            //nowe okno "koniec gry"
+        }
     }
 
     fun onClickTemp(word: Words, kat: String ): String
