@@ -7,37 +7,43 @@ import kotlinx.android.synthetic.main.activity_game.*
 
 class GameActivity : AppCompatActivity() {
 
+    var imageResource: Int = 0
+    var ximageResource: Int = 0
+    var yimageResource: Int = 0
+    var zimageResource: Int = 0
+    var amount_of_lives_counter = 3
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
         val button_pow = btn_powrot
-            button_pow.setOnClickListener {
-                val intent = Intent(this,MainActivity::class.java)
-                startActivity(intent)
+        button_pow.setOnClickListener {
+            val intent = Intent(this,MainActivity::class.java)
+            startActivity(intent)
 
-                }
+        }
         amount_of_lives.text = "3"
         good_answers.text = "0"
         wrong_answers.text = "0"
         var good_answers_counter = 0
         var wrong_answers_counter = 0
-        var amount_of_lives_counter = 3
         val kat: String= intent.getStringExtra("kat")
         val image = ImageReader()
         val word = Words()
-        val good_word = onClickTemp(word, kat)
-        val wrong_images = Array<String>(3){"it =$it"}
+        var good_word = onClickTemp(word, kat)
+        var wrong_images = Array<String>(3){"it =$it"}
         for (i in 0..2) {
             wrong_images[i] = image.RandImage(good_word, word.readFile(this,"slowka/"+kat+".txt"))
         }
         slowko.text = good_word
-        val wrong_image1 = wrong_images[0]
-        val wrong_image2 = wrong_images[1]
-        val wrong_image3 = wrong_images[2]
-        val imageResource = resources.getIdentifier("@drawable/$good_word", null, this.packageName)
-        val ximageResource = resources.getIdentifier("@drawable/$wrong_image1", null, this.packageName)
-        val yimageResource = resources.getIdentifier("@drawable/$wrong_image2", null, this.packageName)
-        val zimageResource = resources.getIdentifier("@drawable/$wrong_image3", null, this.packageName)
+        var wrong_image1 = wrong_images[0]
+        var wrong_image2 = wrong_images[1]
+        var wrong_image3 = wrong_images[2]
+        imageResource = resources.getIdentifier("@drawable/$good_word", null, this.packageName)
+        ximageResource = resources.getIdentifier("@drawable/$wrong_image1", null, this.packageName)
+        yimageResource = resources.getIdentifier("@drawable/$wrong_image2", null, this.packageName)
+        zimageResource = resources.getIdentifier("@drawable/$wrong_image3", null, this.packageName)
         imageView1.setImageResource(imageResource)
         imageView2.setImageResource(ximageResource)
         imageView3.setImageResource(yimageResource)
@@ -46,6 +52,7 @@ class GameActivity : AppCompatActivity() {
         imageView1.setOnClickListener {
             good_answers_counter += 1
             good_answers.text = good_answers_counter.toString()
+            losujNowe(kat)
         }
         val imageViev2 = imageView2
         imageView2.setOnClickListener {
@@ -53,6 +60,7 @@ class GameActivity : AppCompatActivity() {
             wrong_answers.text = wrong_answers_counter.toString()
             amount_of_lives_counter -= 1
             amount_of_lives.text = amount_of_lives_counter.toString()
+            losujNowe(kat)
         }
         val imageViev3 = imageView3
         imageView3.setOnClickListener {
@@ -60,6 +68,7 @@ class GameActivity : AppCompatActivity() {
             wrong_answers.text = wrong_answers_counter.toString()
             amount_of_lives_counter -= 1
             amount_of_lives.text = amount_of_lives_counter.toString()
+            losujNowe(kat)
         }
         val imageViev4 = imageView4
         imageView4.setOnClickListener {
@@ -67,11 +76,38 @@ class GameActivity : AppCompatActivity() {
             wrong_answers.text = wrong_answers_counter.toString()
             amount_of_lives_counter -= 1
             amount_of_lives.text = amount_of_lives_counter.toString()
+            losujNowe(kat)
         }
+
+    }
+
+    fun losujNowe(kat: String) {
+        val image = ImageReader()
+        val word = Words()
+        var good_word = onClickTemp(word, kat)
+        var wrong_images = Array<String>(3){"it =$it"}
+        for (i in 0..2) {
+            wrong_images[i] = image.RandImage(good_word, word.readFile(this,"slowka/"+kat+".txt"))
+        }
+        slowko.text = good_word
+
+        var wrong_image1 = wrong_images[0]
+        var wrong_image2 = wrong_images[1]
+        var wrong_image3 = wrong_images[2]
+
+        imageResource = resources.getIdentifier("@drawable/$good_word", null, this.packageName)
+        ximageResource = resources.getIdentifier("@drawable/$wrong_image1", null, this.packageName)
+        yimageResource = resources.getIdentifier("@drawable/$wrong_image2", null, this.packageName)
+        zimageResource = resources.getIdentifier("@drawable/$wrong_image3", null, this.packageName)
+        imageView1.setImageResource(imageResource)
+        imageView2.setImageResource(ximageResource)
+        imageView3.setImageResource(yimageResource)
+        imageView4.setImageResource(zimageResource)
 
         if (amount_of_lives_counter == 0)
         {
-            //nowe okno "koniec gry"
+            intent = Intent(this, TheEndActivity::class.java)
+            startActivity(intent)
         }
     }
 
