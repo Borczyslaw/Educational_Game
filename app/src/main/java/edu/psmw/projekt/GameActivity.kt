@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_game.*
+import kotlinx.android.synthetic.main.the_end.*
 
 class GameActivity : AppCompatActivity() {
 
@@ -18,9 +19,9 @@ class GameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
         val button_pow = btn_powrot
-        button_pow.setOnClickListener {
-            val intent = Intent(this,MainActivity::class.java)
-            startActivity(intent)
+            button_pow.setOnClickListener {
+                val intent = Intent(this,MainActivity::class.java)
+                startActivity(intent)
 
         }
         amount_of_lives.text = "3"
@@ -52,7 +53,7 @@ class GameActivity : AppCompatActivity() {
         imageView1.setOnClickListener {
             good_answers_counter += 1
             good_answers.text = good_answers_counter.toString()
-            losujNowe(kat)
+            losujNowe(kat, amount_of_lives_counter, good_answers_counter, wrong_answers_counter)
         }
         val imageViev2 = imageView2
         imageView2.setOnClickListener {
@@ -60,7 +61,7 @@ class GameActivity : AppCompatActivity() {
             wrong_answers.text = wrong_answers_counter.toString()
             amount_of_lives_counter -= 1
             amount_of_lives.text = amount_of_lives_counter.toString()
-            losujNowe(kat)
+            losujNowe(kat, amount_of_lives_counter, good_answers_counter, wrong_answers_counter)
         }
         val imageViev3 = imageView3
         imageView3.setOnClickListener {
@@ -68,7 +69,7 @@ class GameActivity : AppCompatActivity() {
             wrong_answers.text = wrong_answers_counter.toString()
             amount_of_lives_counter -= 1
             amount_of_lives.text = amount_of_lives_counter.toString()
-            losujNowe(kat)
+            losujNowe(kat, amount_of_lives_counter, good_answers_counter, wrong_answers_counter)
         }
         val imageViev4 = imageView4
         imageView4.setOnClickListener {
@@ -76,12 +77,12 @@ class GameActivity : AppCompatActivity() {
             wrong_answers.text = wrong_answers_counter.toString()
             amount_of_lives_counter -= 1
             amount_of_lives.text = amount_of_lives_counter.toString()
-            losujNowe(kat)
+            losujNowe(kat, amount_of_lives_counter, good_answers_counter, wrong_answers_counter)
         }
 
     }
 
-    fun losujNowe(kat: String) {
+    fun losujNowe(kat: String, numberoflives: Int, goodanswers: Int, wronganserws: Int) {
         val image = ImageReader()
         val word = Words()
         var good_word = onClickTemp(word, kat)
@@ -104,10 +105,14 @@ class GameActivity : AppCompatActivity() {
         imageView3.setImageResource(yimageResource)
         imageView4.setImageResource(zimageResource)
 
-        if (amount_of_lives_counter == 0)
+        if (amount_of_lives_counter == 0 || goodanswers == 10)
         {
             intent = Intent(this, TheEndActivity::class.java)
+            intent.putExtra("amount_of_lives",amount_of_lives_counter);
+            intent.putExtra("goodans",goodanswers);
+            intent.putExtra("wrongans",wronganserws);
             startActivity(intent)
+
         }
     }
 
