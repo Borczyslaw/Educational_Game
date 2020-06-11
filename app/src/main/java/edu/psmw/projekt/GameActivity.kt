@@ -114,7 +114,6 @@ class GameActivity : AppCompatActivity() {
 
     fun onClickTemp(word: Words, kat: String ): String
     {
-        val rand_word = word.get_rand_word(this, "slowka/"+kat+".txt")
-        return rand_word
+        return word.get_rand_word(this, "slowka/"+kat+".txt")
     }
 }
