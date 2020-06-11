@@ -14,11 +14,16 @@ class TheEndActivity: AppCompatActivity()  {
         var Nol = intent.getIntExtra("amount_of_lives", -1)
         var Ga = intent.getIntExtra("goodans", -1)
         var Wa = intent.getIntExtra("wrongans", -1)
+        if (Nol == 0)
+            gratulacje.text = "Następnym razem będzie lepiej :) "
+        else
+            gratulacje.text = "Gratulacje! :D"
         numberoflives.text = Nol.toString()
         goodanserws.text = Ga.toString()
         wronganserws.text = Wa.toString()
         game_again.setOnClickListener {
             startActivity(Intent(this@TheEndActivity, MainActivity::class.java))
+
         }
     }
 }

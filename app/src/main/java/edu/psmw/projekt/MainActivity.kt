@@ -9,17 +9,11 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.wybor_kategorii.*
-import java.io.File
-import java.util.*
+
 
 
 class MainActivity : AppCompatActivity() {
 
-    fun onClickTemp(word: Words, kat: String ): String
-    {
-        val rand_word = word.get_rand_word(this, "slowka/"+kat+".txt")
-        return rand_word
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
