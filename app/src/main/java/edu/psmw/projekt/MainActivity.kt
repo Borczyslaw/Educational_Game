@@ -11,14 +11,29 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.wybor_kategorii.*
 
 
-
+/***
+ * Activity that is launched with start of the app.
+ * Shows first view, prepares and then shows second view.
+ */
 class MainActivity : AppCompatActivity() {
 
-
+    /***
+     * Private method called with start of MainActivity class.
+     * Calls super method onCreate, sets content view and calls method responsible for
+     * configuring buttons.
+     * @param savedInstanceState Parameter of Bundle? type, needed to call super method.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        StrictMode.allowThreadDiskReads()
         setContentView(R.layout.activity_main)
+        set_buttons()
+    }
+
+    /***
+     * Method that configures all buttons and onClickListener for first 2 views.
+     */
+    private fun set_buttons()
+    {
         btn_start_game.setOnClickListener{
             setContentView(R.layout.wybor_kategorii)
             val button_Ubr = btn_ubrania
@@ -56,7 +71,7 @@ class MainActivity : AppCompatActivity() {
                 intent.putExtra("kat", kat)
                 startActivity(intent)
 
-        }
+            }
 
         }
 
