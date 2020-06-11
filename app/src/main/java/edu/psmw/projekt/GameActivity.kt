@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.the_end.*
  * later used to set imageView
  * @property amount_of_lives Property that keeps amount of lives in a single game
  */
-@Suppress("SameParameterValue")
+
 class GameActivity : AppCompatActivity() {
 
     var imageResource: Int = 0
@@ -64,9 +64,9 @@ class GameActivity : AppCompatActivity() {
      */
     private fun setImages(wrong_images: Array<String>, good_word: String)
     {
-        var wrong_image1 = wrong_images[0]
-        var wrong_image2 = wrong_images[1]
-        var wrong_image3 = wrong_images[2]
+        val wrong_image1 = wrong_images[0]
+        val wrong_image2 = wrong_images[1]
+        val wrong_image3 = wrong_images[2]
         imageResource = resources.getIdentifier("@drawable/$good_word", null, this.packageName)
         ximageResource = resources.getIdentifier("@drawable/$wrong_image1", null, this.packageName)
         yimageResource = resources.getIdentifier("@drawable/$wrong_image2", null, this.packageName)
@@ -127,13 +127,12 @@ class GameActivity : AppCompatActivity() {
         {
             endGame(goodanswers, wronganswers)
         } else {
-            val image = ImageReader()
             val word = Words()
-            var good_word = onClickTemp(word, kat)
-            var wrong_images = Array<String>(3) { "it =$it" }
+            val good_word = onClickTemp(word, kat)
+            val wrong_images = Array<String>(3) { "it =$it" }
             for (i in 0..2) {
                 wrong_images[i] =
-                    image.RandImage(good_word, word.readFile(this, "slowka/" + kat + ".txt"))
+                    word.get_rand_words(good_word, word.readFile(this, "slowka/" + kat + ".txt"))
             }
             slowko.text = good_word
             setImages(wrong_images, good_word)
