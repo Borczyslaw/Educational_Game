@@ -49,8 +49,6 @@ class Words {
         val rand = Random()
         val x: Int = rand.nextInt(30)
         return array[x]
-
-
     }
 
     /**

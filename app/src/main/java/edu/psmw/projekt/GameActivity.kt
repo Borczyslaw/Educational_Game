@@ -4,28 +4,27 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_game.*
-import kotlinx.android.synthetic.main.the_end.*
 
 /***
  * Activity with all logics needed to play the game.
- * @property imageResource This property is used for keeping id of right image, so it can be
+ * @property imageResource Property used for keeping id of right image, so it can be
  * later used to set imageView
- * @property ximageResource This property is used for keeping id of wrong image, so it can be
+ * @property ximageResource Property used for keeping id of wrong image, so it can be
  * later used to set imageView
- * @property yimageResource This property is used for keeping id of wrong image, so it can be
+ * @property yimageResource Property used for keeping id of wrong image, so it can be
  * later used to set imageView
- * @property zimageResource This property is used for keeping id of wrong image, so it can be
+ * @property zimageResource Property used for keeping id of wrong image, so it can be
  * later used to set imageView
  * @property amount_of_lives Property that keeps amount of lives in a single game
  */
 
 class GameActivity : AppCompatActivity() {
 
-    var imageResource: Int = 0
-    var ximageResource: Int = 0
-    var yimageResource: Int = 0
-    var zimageResource: Int = 0
-    var amount_of_lives_counter = 3
+    private var imageResource: Int = 0
+    private var ximageResource: Int = 0
+    private var yimageResource: Int = 0
+    private var zimageResource: Int = 0
+    private var amount_of_lives_counter = 3
 
     /***
      * Private method used to configure home button.
@@ -53,7 +52,7 @@ class GameActivity : AppCompatActivity() {
         amount_of_lives.text = amount_of_lives_counter.toString()
         good_answers.text = good_answers_counter.toString()
         wrong_answers.text = wrong_answers_counter.toString()
-        val kat: String= intent.getStringExtra("kat")
+        val kat: String?= intent.getStringExtra("kat")
         losuj(kat, good_answers_counter, wrong_answers_counter)
     }
 
@@ -83,7 +82,7 @@ class GameActivity : AppCompatActivity() {
      * @param number_wrong_ans Integer that keeps number of wrong answers given by user.
      * @param kat String that keeps name of category chosen by user in previous activity.
      */
-    private fun setOnClicks(number_good_ans: Int, number_wrong_ans: Int, kat: String)
+    private fun setOnClicks(number_good_ans: Int, number_wrong_ans: Int, kat: String?)
     {
         var good_answers_counter = number_good_ans
         var wrong_answers_counter = number_wrong_ans
@@ -122,7 +121,7 @@ class GameActivity : AppCompatActivity() {
      * @param goodanswers Integer that keeps number of good answers given by user.
      * @param wronganswers Integer that keeps number of wrong answers given by user.
      */
-    private fun losuj(kat: String, goodanswers: Int, wronganswers: Int) {
+    private fun losuj(kat: String?, goodanswers: Int, wronganswers: Int) {
         if (isEndOfGame(goodanswers))
         {
             endGame(goodanswers, wronganswers)
@@ -173,7 +172,7 @@ class GameActivity : AppCompatActivity() {
      * @param kat String that keeps name of category chosen by user
      * @return Returns word from chosen category.
      */
-    private fun onClickTemp(word: Words, kat: String ): String
+    private fun onClickTemp(word: Words, kat: String? ): String
     {
         return word.get_rand_word(this, "slowka/"+kat+".txt")
     }
