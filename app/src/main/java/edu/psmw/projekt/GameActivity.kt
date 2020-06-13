@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.KeyEvent
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.core.view.marginBottom
@@ -34,6 +35,22 @@ class GameActivity : AppCompatActivity() {
     /***
      * Private method used to configure home button.
      */
+
+    /**
+     * Method that overrides default version of onKeyDown method.
+     * When back button is pressed, the application returns to the first screen.
+     * @param keyCode Int
+     * @param event KeyEvent
+     * @return Boolean
+     */
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if(keyCode == KeyEvent.KEYCODE_BACK) {
+            val intent = Intent(this, MainActivity::class.java)
+            finish()
+            startActivity(intent)
+        }
+        return true
+    }
     private fun setHomeButton()
     {
         val button_pow = btn_powrot

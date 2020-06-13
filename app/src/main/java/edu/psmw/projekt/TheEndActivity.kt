@@ -2,7 +2,7 @@ package edu.psmw.projekt
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
+import android.view.KeyEvent
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.the_end.*
 
@@ -13,6 +13,22 @@ import kotlinx.android.synthetic.main.the_end.*
 class TheEndActivity: AppCompatActivity()  {
 
     /**
+     * Method that overrides default version of onKeyDown method.
+     * When back button is pressed, the application returns to the first screen.
+     * @param keyCode Int
+     * @param event KeyEvent
+     * @return Boolean
+     */
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if(keyCode == KeyEvent.KEYCODE_BACK) {
+            val intent = Intent(this, MainActivity::class.java)
+            finish()
+            startActivity(intent)
+        }
+        return true
+    }
+
+    /**
      * Method called with start of TheEndActivity class.  Sets all textViews with right
      * values, shows appropriate message about score and configures button for playing again.
      * @param savedInstanceState Parameter of Bundle? type, needed to call super method.
@@ -20,14 +36,14 @@ class TheEndActivity: AppCompatActivity()  {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.the_end)
-        var Nol = intent.getIntExtra("amount_of_lives", -1)
-        var Ga = intent.getIntExtra("goodans", -1)
-        var Wa = intent.getIntExtra("wrongans", -1)
+        val Nol = intent.getIntExtra("amount_of_lives", -1)
+        val Ga = intent.getIntExtra("goodans", -1)
+        val Wa = intent.getIntExtra("wrongans", -1)
 
         if (Nol == 0)
-            gratulacje.text = "Następnym razem będzie lepiej :) "
+            gratulacje.text = resources.getText(R.string.bedzie_lepiej)
         else
-            gratulacje.text = "Gratulacje! :D"
+            gratulacje.text = resources.getText(R.string.gratulacje)
         numberoflives.text = Nol.toString()
         goodanserws.text = Ga.toString()
         wronganserws.text = Wa.toString()

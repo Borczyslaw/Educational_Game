@@ -5,6 +5,7 @@ import android.content.Intent
 import android.media.Image
 import android.os.Bundle
 import android.os.StrictMode
+import android.view.KeyEvent
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -16,6 +17,22 @@ import kotlinx.android.synthetic.main.wybor_kategorii.*
  */
 class MainActivity : AppCompatActivity() {
 
+
+    /**
+     * Method that overrides default version of onKeyDown method.
+     * When back button is pressed, the application returns to the first screen.
+     * @param keyCode Int
+     * @param event KeyEvent
+     * @return Boolean
+     */
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if(keyCode == KeyEvent.KEYCODE_BACK) {
+            val intent = Intent(this, MainActivity::class.java)
+            finish()
+            startActivity(intent)
+        }
+        return true
+    }
     /***
      * Private method called with start of MainActivity class.
      * Calls super method onCreate, sets content view and calls method responsible for
