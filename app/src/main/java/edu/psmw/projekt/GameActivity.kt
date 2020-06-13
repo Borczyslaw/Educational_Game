@@ -1,9 +1,14 @@
 package edu.psmw.projekt
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
+import androidx.annotation.RequiresApi
+import androidx.core.view.marginBottom
 import kotlinx.android.synthetic.main.activity_game.*
+import kotlin.random.Random
 
 /***
  * Activity with all logics needed to play the game.
@@ -25,7 +30,7 @@ class GameActivity : AppCompatActivity() {
     private var yimageResource: Int = 0
     private var zimageResource: Int = 0
     private var amount_of_lives_counter = 3
-
+    private val pics = arrayOfNulls<ImageView>(4)
     /***
      * Private method used to configure home button.
      */
@@ -61,7 +66,7 @@ class GameActivity : AppCompatActivity() {
      * @param wrong_images Array of Strings with randomly chosen words for wrong images.
      * @param good_word String with randomly chosen word that is correct.
      */
-    private fun setImages(wrong_images: Array<String>, good_word: String)
+    private fun setImages(wrong_images: Array<String>, good_word: String): Int
     {
         val wrong_image1 = wrong_images[0]
         val wrong_image2 = wrong_images[1]
@@ -70,10 +75,49 @@ class GameActivity : AppCompatActivity() {
         ximageResource = resources.getIdentifier("@drawable/$wrong_image1", null, this.packageName)
         yimageResource = resources.getIdentifier("@drawable/$wrong_image2", null, this.packageName)
         zimageResource = resources.getIdentifier("@drawable/$wrong_image3", null, this.packageName)
-        imageView1.setImageResource(imageResource)
-        imageView2.setImageResource(ximageResource)
-        imageView3.setImageResource(yimageResource)
-        imageView4.setImageResource(zimageResource)
+        val resources: IntArray = intArrayOf(imageResource, ximageResource, yimageResource, zimageResource)
+        //val views : () -> ImageView =
+        pics[0] = imageView1
+        pics[1] = imageView2
+        pics[2] = imageView3
+        pics[3] = imageView4
+
+        /*pics[0]?.setImageResource(resources[0])
+        pics[1]?.setImageResource(resources[1])
+        pics[2]?.setImageResource(resources[2])
+        pics[3]?.setImageResource(resources[3])
+        */
+        val used_pics = arrayOfNulls<Int>(4)
+        val used_resources = arrayOfNulls<Int>(4)
+        var pics_values : Int
+        var goodImage = 0
+        var resource_values : Int
+        var i = 0
+
+        while(i<4)
+        {
+            pics_values = Random.nextInt(0, 100)
+            resource_values = Random.nextInt(0, 100)
+            if ((pics_values % 4) in used_pics)
+            {
+                continue
+            } else if ((resource_values % 4) in used_resources)
+            {
+               continue
+            } else
+            {
+                used_pics[i] = pics_values % 4
+                used_resources[i] = resource_values % 4
+                pics[pics_values%4]?.setImageResource(resources[resource_values%4])
+                i++
+                if ((resource_values % 4) == 0)
+                    {
+                        goodImage = pics_values % 4
+                    }
+            }
+        }
+
+        return goodImage
     }
 
     /**
@@ -82,30 +126,54 @@ class GameActivity : AppCompatActivity() {
      * @param number_wrong_ans Integer that keeps number of wrong answers given by user.
      * @param kat String that keeps name of category chosen by user in previous activity.
      */
-    private fun setOnClicks(number_good_ans: Int, number_wrong_ans: Int, kat: String?)
+    private fun setOnClicks(number_good_ans: Int, number_wrong_ans: Int, kat: String?, goodImage: Int)
     {
         var good_answers_counter = number_good_ans
         var wrong_answers_counter = number_wrong_ans
-        imageView1.setOnClickListener {
+        var imagebad1 = 0; var imagebad2 = 0; var imagebad3=0
+        if (goodImage == 0)
+        {
+            imagebad1 = 1
+            imagebad2 = 2
+            imagebad3 = 3
+        } else if (goodImage == 1)
+        {
+            imagebad1 = 0
+            imagebad2 = 2
+            imagebad3 = 3
+        }
+        else if (goodImage == 2)
+        {
+            imagebad1 = 0
+            imagebad2 = 1
+            imagebad3 = 3
+        }
+        else if (goodImage == 3)
+        {
+            imagebad1 = 0
+            imagebad2 = 1
+            imagebad3 = 2
+        }
+        pics[goodImage]?.setOnClickListener {
             good_answers_counter += 1
             good_answers.text = good_answers_counter.toString()
             losuj(kat, good_answers_counter, wrong_answers_counter)
         }
-        imageView2.setOnClickListener {
+        pics[imagebad1]?.setOnClickListener {
             wrong_answers_counter += 1
             wrong_answers.text = wrong_answers_counter.toString()
             amount_of_lives_counter -= 1
             amount_of_lives.text = amount_of_lives_counter.toString()
             losuj(kat, good_answers_counter, wrong_answers_counter)
         }
-        imageView3.setOnClickListener {
+        pics[imagebad2]?.setOnClickListener {
             wrong_answers_counter += 1
             wrong_answers.text = wrong_answers_counter.toString()
             amount_of_lives_counter -= 1
             amount_of_lives.text = amount_of_lives_counter.toString()
             losuj(kat, good_answers_counter, wrong_answers_counter)
         }
-        imageView4.setOnClickListener {
+        pics[imagebad3]?.setOnClickListener {
             wrong_answers_counter += 1
             wrong_answers.text = wrong_answers_counter.toString()
             amount_of_lives_counter -= 1
@@ -129,13 +197,22 @@ class GameActivity : AppCompatActivity() {
             val word = Words()
             val good_word = onClickTemp(word, kat)
             val wrong_images = Array<String>(3) { "it =$it" }
-            for (i in 0..2) {
-                wrong_images[i] =
-                    word.get_rand_words(good_word, word.readFile(this, "slowka/" + kat + ".txt"))
+            var str : String
+            var i = 0
+            while(true)
+            {
+                str = word.get_rand_words(good_word, word.readFile(this,"slowka/" + kat + ".txt" ))
+                if (str != wrong_images[0] && str != wrong_images[1] && str != wrong_images[2]   )
+                {
+                    wrong_images[i] = str
+                    i++
+                }
+                if (i>2)
+                    break
             }
             slowko.text = good_word
-            setImages(wrong_images, good_word)
-            setOnClicks(goodanswers, wronganswers, kat)
+            val goodImage = setImages(wrong_images, good_word)
+            setOnClicks(goodanswers, wronganswers, kat, goodImage)
         }
 
     }

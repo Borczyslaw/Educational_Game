@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.wybor_kategorii.*
 
-
 /***
  * Activity that is launched with start of the app.
  * Shows first view, prepares and then shows second view.
