@@ -20,11 +20,11 @@ mirror
 plant
 rug
 shower
+sink
 sofa
 table
 towel
 wardrobe
-washbasin
 washing_machine
 wastebasket
 window
