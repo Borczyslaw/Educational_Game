@@ -227,8 +227,15 @@ class GameActivity : AppCompatActivity() {
                 if (i>2)
                     break
             }
-            slowko.text = good_word
             val goodImage = setImages(wrong_images, good_word)
+            if(good_word.contains('_'))
+            {
+                slowko.text = good_word.replace('_', ' ')
+            }
+            else
+            {
+                slowko.text = good_word
+            }
             setOnClicks(goodanswers, wronganswers, kat, goodImage)
         }
 
