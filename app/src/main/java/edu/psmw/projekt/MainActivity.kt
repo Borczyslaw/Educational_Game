@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
             }
             val button_zwierzeta = zwierze
             button_zwierzeta.setOnClickListener {
-                val kat = "Zwierzeta"
+                val kat = "zwierzeta"
                 val intent = Intent(this,GameActivity::class.java)
                 intent.putExtra("kat", kat)
                 startActivity(intent)
