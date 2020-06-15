@@ -51,5 +51,6 @@ class TheEndActivity: AppCompatActivity()  {
             startActivity(Intent(this@TheEndActivity, MainActivity::class.java))
 
         }
+        
     }
 }

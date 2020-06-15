@@ -11,7 +11,7 @@ import androidx.core.view.marginBottom
 import kotlinx.android.synthetic.main.activity_game.*
 import kotlin.random.Random
 
-/***
+/**
  * Activity with all logics needed to play the game.
  * @property imageResource Property used for keeping id of right image, so it can be
  * later used to set imageView
@@ -32,9 +32,7 @@ class GameActivity : AppCompatActivity() {
     private var zimageResource: Int = 0
     private var amount_of_lives_counter = 3
     private val pics = arrayOfNulls<ImageView>(4)
-    /***
-     * Private method used to configure home button.
-     */
+
 
     /**
      * Method that overrides default version of onKeyDown method.
@@ -51,6 +49,9 @@ class GameActivity : AppCompatActivity() {
         }
         return true
     }
+    /**
+     * Private method used to configure home button.
+     */
     private fun setHomeButton()
     {
         val button_pow = btn_powrot
@@ -60,7 +61,7 @@ class GameActivity : AppCompatActivity() {
 
         }
     }
-    /***
+    /**
      * Method called with start of GameActivity class.
      * Calls super method onCreate and controls the main part of the game.
      * @param savedInstanceState Parameter of Bundle? type, needed to call super method.
@@ -78,7 +79,7 @@ class GameActivity : AppCompatActivity() {
         losuj(kat, good_answers_counter, wrong_answers_counter)
     }
 
-    /***
+    /**
      * Private Method that sets imageViews with images described by parameters wrong_images and good_word.
      * @param wrong_images Array of Strings with randomly chosen words for wrong images.
      * @param good_word String with randomly chosen word that is correct.
@@ -93,17 +94,11 @@ class GameActivity : AppCompatActivity() {
         yimageResource = resources.getIdentifier("@drawable/$wrong_image2", null, this.packageName)
         zimageResource = resources.getIdentifier("@drawable/$wrong_image3", null, this.packageName)
         val resources: IntArray = intArrayOf(imageResource, ximageResource, yimageResource, zimageResource)
-        //val views : () -> ImageView =
         pics[0] = imageView1
         pics[1] = imageView2
         pics[2] = imageView3
         pics[3] = imageView4
 
-        /*pics[0]?.setImageResource(resources[0])
-        pics[1]?.setImageResource(resources[1])
-        pics[2]?.setImageResource(resources[2])
-        pics[3]?.setImageResource(resources[3])
-        */
         val used_pics = arrayOfNulls<Int>(4)
         val used_resources = arrayOfNulls<Int>(4)
         var pics_values : Int

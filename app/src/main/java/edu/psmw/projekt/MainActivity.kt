@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         }
         return true
     }
-    /***
+    /**
      * Private method called with start of MainActivity class.
      * Calls super method onCreate, sets content view and calls method responsible for
      * configuring buttons.
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         set_buttons()
     }
 
-    /***
+    /**
      * Method that configures all buttons and onClickListener for first 2 views.
      */
     private fun set_buttons()
