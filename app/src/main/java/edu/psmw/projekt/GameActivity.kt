@@ -21,7 +21,9 @@ import kotlin.random.Random
  * later used to set imageView
  * @property zimageResource Property used for keeping id of wrong image, so it can be
  * later used to set imageView
- * @property amount_of_lives Property that keeps amount of lives in a single game
+ * @property amount_of_lives_counter Property that keeps amount of lives in a single game
+ *
+ * @property pics Property that keeps ImageViews, so it can be randomly chosen in the methods
  */
 
 class GameActivity : AppCompatActivity() {

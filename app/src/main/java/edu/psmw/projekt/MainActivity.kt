@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
      * @param event KeyEvent
      * @return Boolean
      */
-    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if(keyCode == KeyEvent.KEYCODE_BACK) {
             val intent = Intent(this, MainActivity::class.java)
             finish()

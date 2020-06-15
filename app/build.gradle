@@ -19,6 +19,8 @@ android {
     dokka {
         outputFormat = 'html'
         outputDirectory = "$buildDir/javadoc"
+        reportUndocumented = true
+        includeNonPublic = true
     }
     buildTypes {
         release {
