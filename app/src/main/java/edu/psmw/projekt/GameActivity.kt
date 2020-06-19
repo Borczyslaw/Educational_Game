@@ -177,22 +177,50 @@ class GameActivity : AppCompatActivity() {
             wrong_answers_counter += 1
             wrong_answers.text = wrong_answers_counter.toString()
             amount_of_lives_counter -= 1
-            amount_of_lives.text = amount_of_lives_counter.toString()
-            losuj(kat, good_answers_counter, wrong_answers_counter)
+            if (amount_of_lives_counter == -1)
+            {
+                amount_of_lives.text = "0"
+                amount_of_lives_counter = 0
+                endGame(good_answers_counter, wrong_answers_counter)
+            }
+            else
+            {
+                amount_of_lives.text = amount_of_lives_counter.toString()
+                losuj(kat, good_answers_counter, wrong_answers_counter)
+            }
+
         }
         pics[imagebad2]?.setOnClickListener {
             wrong_answers_counter += 1
             wrong_answers.text = wrong_answers_counter.toString()
             amount_of_lives_counter -= 1
-            amount_of_lives.text = amount_of_lives_counter.toString()
-            losuj(kat, good_answers_counter, wrong_answers_counter)
+            if (amount_of_lives_counter == -1)
+            {
+                amount_of_lives.text = "0"
+                amount_of_lives_counter = 0
+                endGame(good_answers_counter, wrong_answers_counter)
+            }
+            else
+            {
+                amount_of_lives.text = amount_of_lives_counter.toString()
+                losuj(kat, good_answers_counter, wrong_answers_counter)
+            }
         }
         pics[imagebad3]?.setOnClickListener {
             wrong_answers_counter += 1
             wrong_answers.text = wrong_answers_counter.toString()
             amount_of_lives_counter -= 1
-            amount_of_lives.text = amount_of_lives_counter.toString()
-            losuj(kat, good_answers_counter, wrong_answers_counter)
+            if (amount_of_lives_counter == -1)
+            {
+                amount_of_lives.text = "0"
+                amount_of_lives_counter = 0
+                endGame(good_answers_counter, wrong_answers_counter)
+            }
+            else
+            {
+                amount_of_lives.text = amount_of_lives_counter.toString()
+                losuj(kat, good_answers_counter, wrong_answers_counter)
+            }
         }
     }
 
@@ -259,8 +287,9 @@ class GameActivity : AppCompatActivity() {
      */
     private fun isEndOfGame(goodanswers: Int):Boolean
     {
-        if (amount_of_lives_counter == 0 || goodanswers == 10)
+        if (amount_of_lives_counter < 0 || goodanswers == 10)
             return true
+
         return false
     }
 
